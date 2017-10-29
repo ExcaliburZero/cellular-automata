@@ -39,6 +39,16 @@ class Elementary {
     this
   }
 
+  def setEmpty(empty: Char): Elementary = {
+    this.empty = empty
+    this
+  }
+
+  def setFilled(filled: Char): Elementary = {
+    this.filled = filled
+    this
+  }
+
   def setInterval(interval: Int): Elementary = {
     this.interval = interval
     this
