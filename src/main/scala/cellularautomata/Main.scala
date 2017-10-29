@@ -39,6 +39,11 @@ object Main {
     if (conf.elementary.interval.isSupplied) {
       ca.setInterval(conf.elementary.interval())
     }
+    if (conf.elementary.generation.isSupplied) {
+      println("Enter the initial generation:")
+      val line = readLine().toCharArray
+      ca.setGeneration(line.map(_ != ' '))
+    }
 
     ca.run()
   }
@@ -53,6 +58,7 @@ class Conf(arguments: Seq[String]) extends ScallopConf(arguments) {
     val filled = opt[Char]()
 
     val interval = opt[Int]()
+    val generation = opt[Boolean]()
   }
   addSubcommand(elementary)
 

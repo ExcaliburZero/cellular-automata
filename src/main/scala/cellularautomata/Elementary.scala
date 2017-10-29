@@ -16,13 +16,14 @@ object Elementary {
 }
 
 class Elementary {
-  var rule: Int = Elementary.DEFAULT_RULE
-  var range: Int = Elementary.DEFAULT_RANGE
-  var size: Int = Elementary.DEFAULT_SIZE
-  var empty: Char = Elementary.DEFAULT_EMPTY
-  var filled: Char = Elementary.DEFAULT_FILLED
+  private var rule: Int = Elementary.DEFAULT_RULE
+  private var range: Int = Elementary.DEFAULT_RANGE
+  private var size: Int = Elementary.DEFAULT_SIZE
+  private var empty: Char = Elementary.DEFAULT_EMPTY
+  private var filled: Char = Elementary.DEFAULT_FILLED
 
-  var interval: Int = Elementary.DEFAULT_INTERVAL
+  private var interval: Int = Elementary.DEFAULT_INTERVAL
+  private var initialGeneration: Option[Elementary.Generation] = None
 
   def setRule(rule: Int): Elementary = {
     this.rule = rule
@@ -54,11 +55,22 @@ class Elementary {
     this
   }
 
-  def run(): Unit = {
-    val initialGeneration = new Elementary.Generation(size)
-    initialGeneration.update(size / 2, true)
+  def setGeneration(gen: Elementary.Generation): Elementary = {
+    this.initialGeneration = Some(gen)
+    this
+  }
 
-    runLoop(initialGeneration)
+  def run(): Unit = {
+    val gen = initialGeneration match {
+      case Some(g) =>
+        g.toList.padTo(size, false).take(size).toArray
+      case None =>
+        val startGen = new Elementary.Generation(size)
+        startGen.update(size / 2, true)
+        startGen
+    }
+
+    runLoop(gen)
   }
 
   @tailrec
