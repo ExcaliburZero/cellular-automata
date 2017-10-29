@@ -11,11 +11,92 @@ A 1D elementary cellular automata can be run by using the `elementary` subcomman
 * interval - The time interval, in miliseconds, between line prints. (default `75`)
 * empty - The character to print for empty cells. (default ` `)
 * filled - The character to print for filled cells. (default `█`)
+* generation - Accepts an initial generation from standard input. Spaces are converted into empty cells, and non-spaces are converted in filled cells.
 
 ```
-sbt "run elementary --rule 18"
+$ sbt "run elementary --rule 18"
+                                        █                                       
+                                       █ █                                      
+                                      █   █                                     
+                                     █ █ █ █                                    
+                                    █       █                                   
+                                   █ █     █ █                                  
+                                  █   █   █   █                                 
+                                 █ █ █ █ █ █ █ █                                
+                                █               █                               
+                               █ █             █ █                              
+                              █   █           █   █                             
+                             █ █ █ █         █ █ █ █                            
+                            █       █       █       █                           
+                           █ █     █ █     █ █     █ █                          
+                          █   █   █   █   █   █   █   █                         
+                         █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █                        
+                        █                               █                       
+                       █ █                             █ █                      
+                      █   █                           █   █                     
+                     █ █ █ █                         █ █ █ █                    
+                    █       █                       █       █                   
+                   █ █     █ █                     █ █     █ █                  
+                  █   █   █   █                   █   █   █   █                 
+                 █ █ █ █ █ █ █ █                 █ █ █ █ █ █ █ █                
+                █               █               █               █               
 ```
 
 ```
-sbt "run elementary --rule 9768792 --range 4 --size 120"
+$ sbt "run elementary --rule 9768792 --range 4 --size 120"
+                                                            █                                                           
+                                                          ███                                                           
+                                                       █    █                                                           
+                                                     ███  ███                                                           
+                                                  █         █                                                           
+                                                ███       ███                                                           
+                                             █    █    █    █                                                           
+                                           ███  ███  ███  ███                                                           
+                                        █                   █                                                           
+                                      ███                 ███                                                           
+                                   █    █              █    █                                                           
+                                 ███  ███            ███  ███                                                           
+                              █         █         █         █                                                           
+                            ███       ███       ███       ███                                                           
+                         █    █    █    █    █    █    █    █                                                           
+                       ███  ███  ███  ███  ███  ███  ███  ███                                                           
+                    █                                       █                                                           
+                  ███                                     ███                                                           
+               █    █                                  █    █                                                           
+             ███  ███                                ███  ███                                                           
+          █         █                             █         █                                                           
+        ███       ███                           ███       ███                                                           
+     █    █    █    █                        █    █    █    █                                                           
+   ███  ███  ███  ███                      ███  ███  ███  ███                                                           
+```
+
+```
+$ sbt "run elementary --rule 18 --generation"
+Enter the initial generation:
+          1                        t           s
+          █                        █           █                                
+         █ █                      █ █         █ █                               
+        █   █                    █   █       █   █                              
+       █ █ █ █                  █ █ █ █     █ █ █ █                             
+      █       █                █       █   █       █                            
+     █ █     █ █              █ █     █ █ █ █     █ █                           
+    █   █   █   █            █   █   █       █   █   █                          
+   █ █ █ █ █ █ █ █          █ █ █ █ █ █     █ █ █ █ █ █                         
+  █               █        █           █   █           █                        
+ █ █             █ █      █ █         █ █ █ █         █ █                       
+    █           █   █    █   █       █       █       █   █                      
+   █ █         █ █ █ █  █ █ █ █     █ █     █ █     █ █ █ █                     
+  █   █       █       ██       █   █   █   █   █   █       █                    
+ █ █ █ █     █ █     █  █     █ █ █ █ █ █ █ █ █ █ █ █     █ █                   
+        █   █   █   █ ██ █   █                       █   █   █                  
+       █ █ █ █ █ █ █      █ █ █                     █ █ █ █ █ █                 
+      █             █    █     █                   █           █                
+     █ █           █ █  █ █   █ █                 █ █         █ █               
+    █   █         █   ██   █ █   █               █   █       █   █              
+   █ █ █ █       █ █ █  █ █   █ █ █             █ █ █ █     █ █ █ █             
+  █       █     █     ██   █ █     █           █       █   █       █            
+ █ █     █ █   █ █   █  █ █   █   █ █         █ █     █ █ █ █     █ █           
+    █   █   █ █   █ █ ██   █ █ █ █   █       █   █   █       █   █   █          
+   █ █ █ █ █   █ █      █ █       █ █ █     █ █ █ █ █ █     █ █ █ █ █ █         
+  █         █ █   █    █   █     █     █   █           █   █           █        
 ```
